@@ -5,3 +5,7 @@ from .models import QuestionModel,AnswerModel
 def question(request):
     questions = QuestionModel.objects.all()
     return render(request, 'question.html', {'questions': questions})
+
+def popular(request):
+    popularqs = QuestionModel.objects.filter(q_votes__gt = 2)
+    return render(request, 'popular.html', {'popularqs':popularqs})
