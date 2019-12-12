@@ -1,0 +1,16 @@
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    Title <input type="text" name="title"/><br><br>
+    Description <input type="text" name="q_desc"><br><br>
+    Posted By <input type="text" name="posted_by"><br><br>
+    Category <select name="category">
+        {% for category in categories %}
+            <option value="{{category.id}}">{{category.c_title}}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+    Image <input type="file" name="q_img"><br><br>
+    <input type="hidden" name="q_votes" value='0'>
+    <input type="submit" value="Submit">
+</form>
